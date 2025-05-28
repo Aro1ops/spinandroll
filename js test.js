@@ -86,6 +86,7 @@ function updateBalanceDisplay(){
     
     window.localStorage.setItem('dolgcartely', dolgcartely);
     if (betik === true){
+        document.getElementById('koreltxt').textContent = "ТЫ СПАС ПСА";
         if (subaki == 1){
             document.getElementById('bet').src = "betik.jpg"
         } else {
@@ -100,6 +101,8 @@ function updateBalanceDisplay(){
         }
         
     }
+
+    
     document.getElementById('depcoin').textContent = "DEP:" + dep;
     if (cheat == true){
         document.getElementById('balance').textContent = "Balance:" + balance + "ch";
@@ -129,6 +132,7 @@ function root(){
 function Bet(){
     if(balance>=10000000 && betik ==false){//100000000
         balance -=  10000000;
+        
         betik = true;
         localStorage.setItem('betik', JSON.stringify(true));
    //   localStorage.setItem('dolg', JSON.stringify(false));
@@ -174,7 +178,7 @@ function remove(){
         
     localStorage.setItem('dolg', JSON.stringify(false));
     window.localStorage.setItem('dolgcartely', 0);
-    
+
     updateBalanceDisplay();
 }
 function Deps(){
