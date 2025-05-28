@@ -115,6 +115,7 @@ body::before {
 }
 
 #slot1, #slot2, #slot3 {
+    margn-top: 20%;
     font-size: 4rem;
     min-width: 80px;
     border: 2px solid black;
