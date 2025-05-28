@@ -240,19 +240,19 @@ function Dep(){
                     balance -= curretdep * 2;
                 }
                 else if (randomItem === "7️⃣" && randomItem2 === "7️⃣" && randomItem3 === "7️⃣"){
-                    balance += curretdep * 10;
+                    balance += curretdep * 11;
                 }
                 else if (randomItem === "🍋" && randomItem2 === "🍋" && randomItem3 === "🍋"){
-                    balance += curretdep * 2;
+                    balance += curretdep * 2.5;
                 }
                 else if (randomItem === "🍒" && randomItem2 === "🍒" && randomItem3 === "🍒"){
-                    balance += curretdep * 2;
+                    balance += curretdep * 2.5;
                 }
                 else if (randomItem === "🍇" && randomItem2 === "🍇" && randomItem3 === "🍇"){
-                    balance += curretdep * 2;
+                    balance += curretdep * 2.5;
                 }
                 else if ((randomItem === "🍇" || randomItem === "🍋" || randomItem === "🍒") && (randomItem2 === "🍇" || randomItem2 === "🍋" || randomItem2 === "🍒") && (randomItem3 === "🍇" || randomItem3 === "🍋" || randomItem3 === "🍒")){
-                    balance = balance + curretdep * 1.2;
+                    balance = balance + curretdep * 1.5;
                 } 
                 else {
                     setTimeout(() => {
