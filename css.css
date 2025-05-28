@@ -107,11 +107,11 @@ body::before {
 .slots {
     display: flex;
     
-    
-    margin-top: 30%;
+    margin-top: 18vh;
+    justify-content: center;
     gap: 50px;
     
-    justify-content: center;
+    
 }
 
 #slot1, #slot2, #slot3 {
@@ -215,7 +215,7 @@ body::before {
 /* iPhone specific fixes */
 @supports (-webkit-touch-callout: none) {
     .slots {
-        margin-top: -2vh;
+        margin-top: 18vh;
     }
     
     #slot1, #slot2, #slot3 {
