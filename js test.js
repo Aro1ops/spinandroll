@@ -240,7 +240,7 @@ function Dep(){
                     balance += curretdep * 2;
                 }
                 if ((randomItem === "🍇" || randomItem === "🍋" || randomItem === "🍒") && (randomItem2 === "🍇" || randomItem2 === "🍋" || randomItem2 === "🍒") && (randomItem3 === "🍇" || randomItem3 === "🍋" || randomItem3 === "🍒")){
-                    balance = balance + curretdep * 1.5;
+                    balance = balance + curretdep * 1.2;
                 } else {
                     setTimeout(() => {
                         document.getElementById('slot1').textContent = "До";
