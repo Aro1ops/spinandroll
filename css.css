@@ -20,13 +20,25 @@ html, body {
     overflow: hidden;
     touch-action: manipulation;
 }
-
+@keyframes changeGradient {
+  0% {
+    background-image: url("bordi.png"),
+                      linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+  }
+  50% {
+    background-image: url("bordi.png"),
+                      linear-gradient(to right, #4776E6, #8E54E9);
+  }
+  100% {
+    background-image: url("bordi.png"),
+                      linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+  }
+}
 body {
-    background-image: url("bordi.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    position: fixed;
+     background: url("bordi.png") center/cover no-repeat,
+              linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+  animation: changeGradient 10s ease infinite;
+  background-blend-mode: overlay;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -76,13 +88,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 55px;
-    margin-top: 180px;
+    margin-top: 30%;
+    gap: 50px;
+    
+    justify-content: center;
 }
 
 #slot1, #slot2, #slot3 {
-    font-size: 5rem;
+    font-size: 4rem;
     min-width: 80px;
+    border: 2px solid black;
     text-align: center;
 }
 
