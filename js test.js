@@ -58,7 +58,7 @@ function plus(){
     balance += 10000;
     updateBalanceDisplay();
 }
-const slots = ["💣","7️⃣","🍋","🍒","🍇"]
+const slots = ["7️⃣","🍋","🍒","🍇"]
 const phone = document.getElementById('phone');
 window.localStorage.setItem('balance', balance);
 updateBalanceDisplay();
