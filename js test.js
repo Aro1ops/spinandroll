@@ -17,9 +17,11 @@ let randomItem;
 let randomItem2;
 let randomItem3;
 let depC = false;
+let subaki = Math.round(Math.random(1));
 let dolg =JSON.parse(localStorage.getItem('dolg'));
 let betik = JSON.parse(localStorage.getItem('betik'));
 let dolgcartely = parseInt(window.localStorage.getItem('dolgcartely'));
+
 window.addEventListener("scroll", () => {
   if (window.scrollX > 0) {
     window.scrollTo(0, window.scrollY);
@@ -77,9 +79,19 @@ function updateBalanceDisplay(){
     
     window.localStorage.setItem('dolgcartely', dolgcartely);
     if (betik === true){
-        document.getElementById('bet').src = "betik.jpg"
+        if (subaki == 1){
+            document.getElementById('bet').src = "betik.jpg"
+        } else {
+            document.getElementById('bet').src = "olivka.jpg"
+        }
+        
     } else {
-        document.getElementById('bet').src = "betikKletka.jpg"
+        if (subaki == 1 ){
+            document.getElementById('bet').src = "betikKletka.jpg"
+        } else {
+            document.getElementById('bet').src = "kletkaolivka.jpg"
+        }
+        
     }
     document.getElementById('depcoin').textContent = "DEP:" + dep;
     document.getElementById('balance').textContent = "Balance:" + balance;
