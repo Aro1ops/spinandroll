@@ -1,0 +1,249 @@
+async function hashText(text) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return hashHex;
+}
+const correctHash = '0ec3a5c3a2226141d76557641569a5f01cefeb56a0be9dd2b5bd5ecc8b7194b7'; 
+let balance = parseInt(window.localStorage.getItem('balance'));
+let dep = parseInt(window.localStorage.getItem('dep'));
+const audio1 = new Audio('song1.mp3');
+const depai = new Audio('depai.mp3');
+let time = null;
+let repeattme = null;
+let randomItem;
+let randomItem2;
+let randomItem3;
+let depC = false;
+let dolg =JSON.parse(localStorage.getItem('dolg'));
+let betik = JSON.parse(localStorage.getItem('betik'));
+let dolgcartely = parseInt(window.localStorage.getItem('dolgcartely'));
+window.addEventListener("scroll", () => {
+  if (window.scrollX > 0) {
+    window.scrollTo(0, window.scrollY);
+  }
+});
+if (localStorage.getItem('dolg') === null) {
+  
+  localStorage.setItem('dolg', JSON.stringify(false));
+}
+if (localStorage.getItem('betik') === null) {
+  
+  localStorage.setItem('betik', JSON.stringify(false));
+}
+if (isNaN(dolgcartely)){
+    dolgcartely = 0;
+    window.localStorage.setItem('dolgcartely', dolgcartely);
+}
+if (isNaN(balance)){
+    balance = 1500;
+    window.localStorage.setItem('balance', balance);
+}
+if (isNaN(dep)){
+    dep = 100;
+    window.localStorage.setItem('balance', dep);
+}
+async function check(){
+    
+    if (await hashText(document.getElementById('password').value) == correctHash){
+        document.getElementById('plus').style.display = 'flex';
+    }
+}
+
+function plus(){
+    balance += 10000;
+    updateBalanceDisplay();
+}
+const slots = ["💣","7️⃣","🍋","🍒","🍇"]
+const phone = document.getElementById('phone');
+window.localStorage.setItem('balance', balance);
+updateBalanceDisplay();
+phone.style.display = 'none';
+document.getElementById('password').style.display = 'none';
+document.getElementById('sum').style.display = 'none';
+document.getElementById('cann').style.display = 'none';
+document.getElementById('plus').style.display = 'none';
+function getRandomElement(array) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+function updateBalanceDisplay(){
+    
+    StartTime();
+    window.localStorage.setItem('balance', balance);
+    window.localStorage.setItem('dep', dep);
+    
+    window.localStorage.setItem('dolgcartely', dolgcartely);
+    if (betik === true){
+        document.getElementById('bet').src = "betik.jpg"
+    } else {
+        document.getElementById('bet').src = "betikKletka.jpg"
+    }
+    document.getElementById('depcoin').textContent = "DEP:" + dep;
+    document.getElementById('balance').textContent = "Balance:" + balance;
+    if (balance>dolgcartely){
+        
+        balance -= dolgcartely; 
+
+        dolgcartely = 0;
+        window.localStorage.setItem('balance', balance);
+    
+    
+        window.localStorage.setItem('dolgcartely', dolgcartely);
+    }
+}
+function root(){
+    phone.style.display = 'block'
+    document.getElementById('password').style.display = 'flex';
+    document.getElementById('sum').style.display = 'flex';
+    document.getElementById('cann').style.display = 'flex';
+    document.getElementById('plus').style.display = 'none';
+}
+function Bet(){
+    if(balance>=1 && betik ==false){//100000000
+        balance -=  1;
+        betik = true;
+        localStorage.setItem('betik', JSON.stringify(true));
+   //   localStorage.setItem('dolg', JSON.stringify(false));
+        updateBalanceDisplay();
+    }
+}
+function Dolg(){
+    if (dolg === false){
+        dolg = true;
+        balance += 10000;
+        dolgcartely += 50000;
+        localStorage.setItem('dolg', JSON.stringify(true));
+        window.localStorage.setItem('dolgcartely', dolgcartely);
+        updateBalanceDisplay();
+
+        setTimeout(() => {
+            dolg = false;
+            localStorage.setItem('dolg', JSON.stringify(false));
+            updateBalanceDisplay();
+        }, 60000);
+    } else {
+        setTimeout(() => {
+            dolg = false;
+            localStorage.setItem('dolg', JSON.stringify(false));
+            updateBalanceDisplay();
+        }, 60000);
+    }
+}
+function cann(){
+    phone.style.display = 'none';
+    document.getElementById('password').style.display = 'none';
+    document.getElementById('sum').style.display = 'none';
+    document.getElementById('cann').style.display = 'none';
+    document.getElementById('plus').style.display = 'none';
+}
+function remove(){
+    balance = 1000;
+    updateBalanceDisplay();
+}
+function Deps(){
+    
+   
+    dep = dep + 100;
+    
+    updateBalanceDisplay();
+}
+function Depc(){
+    if  (dep<=50){
+        dep = dep;
+    }
+    else{
+        dep = dep - 10;
+    }
+    updateBalanceDisplay();
+}
+function StartTime(){
+    clearTimeout(time);
+    clearTimeout(repeattme);
+    depai.pause();
+    depai.currentTime = 0;
+
+    time = setTimeout(() => {
+        depai.play();
+        repeattme = setTimeout(() => {
+            StartTime();
+        }, 40000);
+    }, 60000);     
+}
+
+function Dep(){
+    if(balance <=0 && depC == true){
+
+    }else{
+        if (balance>=dep && depC == false){
+            
+            StartTime();
+            depai.pause();
+            depai.currentTime = 0;
+            clearTimeout(time);
+            clearTimeout(repeattme);
+    
+            audio1.play();
+            depC = true;
+            let interval;
+            let curretdep = dep;
+            balance = balance - dep;
+            interval = setInterval(() => {
+                randomItem = slots[Math.floor(Math.random() * slots.length)];
+                document.getElementById('slot1').textContent = randomItem;
+            }, 100);
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 3000);
+            interval2 = setInterval(() => {
+                randomItem2 = slots[Math.floor(Math.random() * slots.length)];
+                document.getElementById('slot2').textContent = randomItem2;
+            }, 100);
+            setTimeout(() => {
+                clearInterval(interval2);
+            }, 4500);
+            interval3 = setInterval(() => {
+                randomItem3 = slots[Math.floor(Math.random() * slots.length)];
+                document.getElementById('slot3').textContent = randomItem3;
+            }, 100);
+            setTimeout(() => {
+                clearInterval(interval3);
+            }, 6000); //const slots = ["💣","7️⃣","🍋","🍒","🍇"]
+            setTimeout(() =>{
+                if (randomItem === "💣" && randomItem2 === "💣" && randomItem3 === "💣"){
+                    balance -= curretdep * 2;
+                }
+                if (randomItem === "7️⃣" && randomItem2 === "7️⃣" && randomItem3 === "7️⃣"){
+                    balance += curretdep * 10;
+                }
+                if (randomItem === "🍋" && randomItem2 === "🍋" && randomItem3 === "🍋"){
+                    balance += curretdep * 2;
+                }
+                if (randomItem === "🍒" && randomItem2 === "🍒" && randomItem3 === "🍒"){
+                    balance += curretdep * 2;
+                }
+                if (randomItem === "🍇" && randomItem2 === "🍇" && randomItem3 === "🍇"){
+                    balance += curretdep * 2;
+                }
+                if ((randomItem === "🍇" || randomItem === "🍋" || randomItem === "🍒") && (randomItem2 === "🍇" || randomItem2 === "🍋" || randomItem2 === "🍒") && (randomItem3 === "🍇" || randomItem3 === "🍋" || randomItem3 === "🍒")){
+                    balance = balance + curretdep * 1.5;
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('slot1').textContent = "До";
+                        document.getElementById('slot2').textContent = "де";
+                        document.getElementById('slot3').textContent = "п!";
+                    }, 700);
+                    
+                }
+                depC = false;
+                updateBalanceDisplay();
+            }, 6010);
+            
+            updateBalanceDisplay();
+        }
+        
+    }
+    
+}
