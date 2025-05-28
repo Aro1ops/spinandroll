@@ -10,6 +10,7 @@ const correctHash = '0ec3a5c3a2226141d76557641569a5f01cefeb56a0be9dd2b5bd5ecc8b7
 let balance = parseInt(window.localStorage.getItem('balance'));
 let dep = parseInt(window.localStorage.getItem('dep'));
 const audio1 = new Audio('song1.mp3');
+const audio2 = new Audio('song2.mp3');
 const depai = new Audio('depai.mp3');
 let time = null;
 let repeattme = null;
@@ -194,10 +195,21 @@ function Dep(){
             StartTime();
             depai.pause();
             depai.currentTime = 0;
+            audio1.pause();
+            audio1.currentTime = 0;
+            audio2.pause();
+            audio2.currentTime = 0;
+
             clearTimeout(time);
             clearTimeout(repeattme);
+            let rand = Math.round(Math.random(1));
+            if (rand==1){
+                audio1.play();
+            } else {
+                audio2.play();
+            }
     
-            audio1.play();
+           
             depC = true;
             let interval;
             let curretdep = dep;
@@ -227,21 +239,22 @@ function Dep(){
                 if (randomItem === "💣" && randomItem2 === "💣" && randomItem3 === "💣"){
                     balance -= curretdep * 2;
                 }
-                if (randomItem === "7️⃣" && randomItem2 === "7️⃣" && randomItem3 === "7️⃣"){
+                else if (randomItem === "7️⃣" && randomItem2 === "7️⃣" && randomItem3 === "7️⃣"){
                     balance += curretdep * 10;
                 }
-                if (randomItem === "🍋" && randomItem2 === "🍋" && randomItem3 === "🍋"){
+                else if (randomItem === "🍋" && randomItem2 === "🍋" && randomItem3 === "🍋"){
                     balance += curretdep * 2;
                 }
-                if (randomItem === "🍒" && randomItem2 === "🍒" && randomItem3 === "🍒"){
+                else if (randomItem === "🍒" && randomItem2 === "🍒" && randomItem3 === "🍒"){
                     balance += curretdep * 2;
                 }
-                if (randomItem === "🍇" && randomItem2 === "🍇" && randomItem3 === "🍇"){
+                else if (randomItem === "🍇" && randomItem2 === "🍇" && randomItem3 === "🍇"){
                     balance += curretdep * 2;
                 }
-                if ((randomItem === "🍇" || randomItem === "🍋" || randomItem === "🍒") && (randomItem2 === "🍇" || randomItem2 === "🍋" || randomItem2 === "🍒") && (randomItem3 === "🍇" || randomItem3 === "🍋" || randomItem3 === "🍒")){
+                else if ((randomItem === "🍇" || randomItem === "🍋" || randomItem === "🍒") && (randomItem2 === "🍇" || randomItem2 === "🍋" || randomItem2 === "🍒") && (randomItem3 === "🍇" || randomItem3 === "🍋" || randomItem3 === "🍒")){
                     balance = balance + curretdep * 1.2;
-                } else {
+                } 
+                else {
                     setTimeout(() => {
                         document.getElementById('slot1').textContent = "До";
                         document.getElementById('slot2').textContent = "де";
