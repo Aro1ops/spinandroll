@@ -20,26 +20,46 @@ html, body {
     overflow: hidden;
     touch-action: manipulation;
 }
-@keyframes changeGradient {
+body {
+  /* Основное фоновое изображение */
+  background-image: url("bordi.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  
+  /* Псевдоэлемент для градиента с анимацией */
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    #5900ff 0%, 
+    #ff0019 50%, 
+    #1eff00 100%);
+  background-size: 300% 300%;
+  animation: gradientFlow 20s ease infinite;
+  opacity: 0.7; 
+  z-index: -1; 
+  transition: background 1.5s ease; 
+}
+
+@keyframes gradientFlow {
   0% {
-    background-image: url("bordi.png"),
-                      linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+    background-position: 0% 50%;
   }
   50% {
-    background-image: url("bordi.png"),
-                      linear-gradient(to right, #4776E6, #8E54E9);
+    background-position: 100% 50%;
   }
   100% {
-    background-image: url("bordi.png"),
-                      linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+    background-position: 0% 50%;
   }
-}
-body {
-     background: url("bordi.png") center/cover no-repeat,
-              linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
-  animation: changeGradient 10s ease infinite;
-  background-blend-mode: overlay;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 
