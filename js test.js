@@ -102,8 +102,8 @@ function root(){
     document.getElementById('plus').style.display = 'none';
 }
 function Bet(){
-    if(balance>=1 && betik ==false){//100000000
-        balance -=  1;
+    if(balance>=100000000 && betik ==false){//100000000
+        balance -=  100000000;
         betik = true;
         localStorage.setItem('betik', JSON.stringify(true));
    //   localStorage.setItem('dolg', JSON.stringify(false));
