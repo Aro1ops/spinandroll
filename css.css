@@ -131,6 +131,7 @@ body::before {
 }
 
 .dep button {
+    font-family: 'casio';
     width: 60%;
     padding: 10px;
     font-size: 1.2rem;
@@ -149,6 +150,7 @@ body::before {
 }
 
 .re, .rem {
+    font-family: 'casio';
     width: 40%;
     padding: 8px;
     font-size: 0.9rem;
