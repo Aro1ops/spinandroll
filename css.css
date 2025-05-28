@@ -6,208 +6,192 @@
     font-family: 'balance';
     src: url('bal.ttf') format('truetype');
 }
-html {
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
-.koreltxt {
-    color: #ffffff;
-    
-}
-#bet {
-    width: 70px;
-    height: 70px;
-    
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: manipulation;
 }
-.kob {
-    
-    width: 70px;
-    height: 70px;
-}
-#cartel {
-    display: flex;
-    place-content: center;
-    gap: 250px;
-}
-#password {
-    position: relative;
-    place-content: center;
-    display: flex;
-    margin-left: 10cap;
-    z-index: 100000;
-}
-#sum {
-    position: relative;
-    place-content: center;
-    display: flex;
-    margin-top: 20px;
-    margin-left: 15cap;
-    width: 20vw;
-    height: 2vh;
-    z-index: 100000;
-}
-#plus {
-    position: relative;
-    
-    display: flex;
-    margin-top: 20px;
-    
-    width: 20vw;
-    height: 2vh;
-    z-index: 100000;
-}
-#cann {
-    position: relative;
-    place-content: center;
-    display: flex;
-    margin-top: 20px;
-    margin-left: 15cap;
-    width: 20vw;
-    height: 2vh;
-    z-index: 100000;
-}
+
 body {
     background-image: url("bordi.png");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
-    height: 89vh;
-    background-attachment: fixed;
-    width: 100vw;
+    position: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
-#slot1 {
-    
-    
-    z-index: 100;
-    position: relative;
-    display: flex;
-    font-size: 22vh;
-    font-size: 20vw;
-    
 
-    
-}
-#slot2 {
+/* Header styles */
+#cartel {
     display: flex;
-    z-index: 100;
-    position: relative;
-    font-size: 22vh;
-    font-size: 20vw;
-    
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    padding: 10px 0;
+    flex-wrap: wrap;
 }
-#slot3 {
+
+.kob, #bet {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.koreltxt {
+    color: #ffffff;
+    font-size: 0.9rem;
     text-align: center;
-    
-    z-index: 100;
-    position: relative;
-/*margin-left: 100px;*/
-    display: flex;
-    font-size: 22vh;
-    font-size: 20vw;
-    
+    max-width: 40%;
 }
+
+/* Casino title */
+.cas { 
+    color: #fff01d;
+    font-size: 3rem;
+    text-align: center;
+    margin: 10px 0;
+    font-family: 'casio', serif;
+}
+
+/* Balance display */
+#balance, #depcoin {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 5px 0;
+    font-family: 'balance', serif;
+}
+
+/* Slots area */
 .slots {
     display: flex;
-    margin-top: -45cap;
-    place-content: center;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: -5vh;
 }
-.root {
-    position: relative;
-    z-index: 150;
-    place-content: center;
+
+#slot1, #slot2, #slot3 {
+    font-size: 3rem;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Deposit controls */
+.dep {
+    position: fixed;
+    bottom: 120px;
+    width: 100%;
     display: flex;
-    color: grey;
+    justify-content: center;
 }
+
+.dep button {
+    width: 60%;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #f0ff1d;
+    border: none;
+    border-radius: 5px;
+}
+
+.button {
+    position: fixed;
+    bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.re, .rem {
+    width: 40%;
+    padding: 8px;
+    font-size: 0.9rem;
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Developer mode */
+.root {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: grey;
+    font-size: 0.8rem;
+}
+
 #phone {
     position: fixed;
-    opacity: 50%;
-    left: 0;
     top: 0;
-    display: block;
-    height: 100vh;
-    width: 100vw;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('ser.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     z-index: 100;
+    display: none;
+    opacity: 0.5;
 }
-.button{
-    display: inline-block;
-    
-}
-.re{
-    height: 5vh;
-    z-index: 25;
-    width: 20vw;
-    font-size: 1vh;
-    margin-left: 15cap;
-    font-size: 4vw;
-    
-    background-color: aquamarine;
-    position: relative;
 
+#password, #sum, #cann, #plus {
+    position: fixed;
+    z-index: 1000;
+    display: none;
 }
-.rem{
-    height: 5vh;
-    z-index: 25;
-    
-    width: 20vw;
-    font-size: 1vh;
-    font-size: 4vw;
-    margin-left: 2cap;
-    background-color: aquamarine;
-    position: relative;
 
+#password {
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    padding: 10px;
 }
-.f{
-    color: #ffffff;
-    margin-top: 1cap;
-    z-index: 10;
-    font-size: 3vh;
-    position: relative;
-    font-family: 'balance';
-    place-content: center;
-    display: flex;
+
+#sum, #cann, #plus {
+    width: 80%;
+    left: 10%;
+    padding: 10px;
 }
-#balance{
-    color: #ffffff;
-    margin-top: 1cap;
-    z-index: 10;
-    font-size: 3vh;
-    position: relative;
-    font-family: 'balance';
-    place-content: center;
-    display: flex;
+
+#sum {
+    top: 30%;
 }
-.dep {
-    position: relative;
-    z-index: 3;
-    place-content: center;
-    margin-top: 470px;
-    
-    display: flex;
-    
-    
+
+#cann {
+    top: 40%;
 }
-.dep button{
-    width: 30vw;
-    
-    font-size: 5vw;
-    background-color: #f0ff1d;
+
+#plus {
+    top: 50%;
 }
-.cas { 
-    color: #fff01d;
-    font-size: 20vw;
-    font-size: 10vh;
-    margin-top: -30px;
-    place-content: center;
-    display: flex;
-    position: relative;
-    z-index: 2;
-    font-family: 'casio', serif;
+
+/* iPhone specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .slots {
+        margin-top: -2vh;
+    }
     
+    #slot1, #slot2, #slot3 {
+        font-size: 2.5rem;
+    }
+    
+    .dep {
+        bottom: 100px;
+    }
+    
+    .dep button {
+        width: 70%;
+    }
 }
