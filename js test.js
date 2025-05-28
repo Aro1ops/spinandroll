@@ -161,7 +161,7 @@ function Dolg(){
             dolg = false;
             localStorage.setItem('dolg', JSON.stringify(false));
             updateBalanceDisplay();
-        }, 6);
+        }, 60000);
     }
 }
 function cann(){
