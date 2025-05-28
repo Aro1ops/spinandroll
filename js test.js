@@ -126,7 +126,7 @@ function Dolg(){
     if (dolg === false){
         dolg = true;
         balance += 10000;
-        dolgcartely += 50000;
+        dolgcartely += 30000;
         localStorage.setItem('dolg', JSON.stringify(true));
         window.localStorage.setItem('dolgcartely', dolgcartely);
         updateBalanceDisplay();
