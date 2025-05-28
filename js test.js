@@ -20,6 +20,7 @@ let randomItem3;
 let depC = false;
 let subaki = Math.round(Math.random(1));
 let dolg =JSON.parse(localStorage.getItem('dolg'));
+let cheat =JSON.parse(localStorage.getItem('cheat'));
 let betik = JSON.parse(localStorage.getItem('betik'));
 let dolgcartely = parseInt(window.localStorage.getItem('dolgcartely'));
 
@@ -28,6 +29,10 @@ window.addEventListener("scroll", () => {
     window.scrollTo(0, window.scrollY);
   }
 });
+if (localStorage.getItem('cheat') === null) {
+  
+  localStorage.setItem('cheat', JSON.stringify(false));
+}
 if (localStorage.getItem('dolg') === null) {
   
   localStorage.setItem('dolg', JSON.stringify(false));
@@ -57,6 +62,7 @@ async function check(){
 
 function plus(){
     balance += 10000;
+    localStorage.setItem('cheat', JSON.stringify(true));
     updateBalanceDisplay();
 }
 const slots = ["7️⃣","🍋","🍒","🍇"]
@@ -95,7 +101,13 @@ function updateBalanceDisplay(){
         
     }
     document.getElementById('depcoin').textContent = "DEP:" + dep;
-    document.getElementById('balance').textContent = "Balance:" + balance;
+    if (cheat == true){
+        document.getElementById('balance').textContent = "Balance:" + balance + "ch";
+        
+    } else{
+        document.getElementById('balance').textContent = "Balance:" + balance;
+    }
+    
     if (balance>dolgcartely){
         
         balance -= dolgcartely; 
@@ -123,11 +135,14 @@ function Bet(){
         updateBalanceDisplay();
     }
 }
+
 function Dolg(){
-    if (dolg === false){
+    if (dolg === false && dolgcartely < 300000){
         dolg = true;
         balance += 10000;
         dolgcartely += 30000;
+        
+        
         localStorage.setItem('dolg', JSON.stringify(true));
         window.localStorage.setItem('dolgcartely', dolgcartely);
         updateBalanceDisplay();
@@ -142,7 +157,7 @@ function Dolg(){
             dolg = false;
             localStorage.setItem('dolg', JSON.stringify(false));
             updateBalanceDisplay();
-        }, 60000);
+        }, 6);
     }
 }
 function cann(){
@@ -154,6 +169,12 @@ function cann(){
 }
 function remove(){
     balance = 1000;
+    dolgcartely += 30000;
+        
+        
+    localStorage.setItem('dolg', JSON.stringify(false));
+    window.localStorage.setItem('dolgcartely', 0);
+    
     updateBalanceDisplay();
 }
 function Deps(){
@@ -240,19 +261,19 @@ function Dep(){
                     balance -= curretdep * 2;
                 }
                 else if (randomItem === "7️⃣" && randomItem2 === "7️⃣" && randomItem3 === "7️⃣"){
-                    balance += curretdep * 11;
+                    balance += curretdep * 10;
                 }
                 else if (randomItem === "🍋" && randomItem2 === "🍋" && randomItem3 === "🍋"){
-                    balance += curretdep * 2.5;
+                    balance += curretdep * 2;
                 }
                 else if (randomItem === "🍒" && randomItem2 === "🍒" && randomItem3 === "🍒"){
-                    balance += curretdep * 2.5;
+                    balance += curretdep * 2;
                 }
                 else if (randomItem === "🍇" && randomItem2 === "🍇" && randomItem3 === "🍇"){
-                    balance += curretdep * 2.5;
+                    balance += curretdep * 2;
                 }
                 else if ((randomItem === "🍇" || randomItem === "🍋" || randomItem === "🍒") && (randomItem2 === "🍇" || randomItem2 === "🍋" || randomItem2 === "🍒") && (randomItem3 === "🍇" || randomItem3 === "🍋" || randomItem3 === "🍒")){
-                    balance = balance + curretdep * 1.5;
+                    balance = balance + curretdep * 1.2;
                 } 
                 else {
                     setTimeout(() => {
