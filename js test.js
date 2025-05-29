@@ -195,7 +195,7 @@ function Depc(){
         dep = dep;
     }
     else{
-        dep = dep - 1000;
+        dep = dep - 100;
     }
     updateBalanceDisplay();
 }
