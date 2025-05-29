@@ -83,7 +83,9 @@ function updateBalanceDisplay(){
     StartTime();
     window.localStorage.setItem('balance', balance);
     window.localStorage.setItem('dep', dep);
-    
+    if (balance <= 100){
+        balance = 1000;
+    }
     window.localStorage.setItem('dolgcartely', dolgcartely);
     if (betik === true){
         document.getElementById('koreltxt').textContent = "ТЫ СПАС ПСА";
