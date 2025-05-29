@@ -61,7 +61,7 @@ async function check(){
 }
 
 function plus(){
-    balance += 10000;
+    balance += 1000000;
     localStorage.setItem('cheat', JSON.stringify(true));
     updateBalanceDisplay();
 }
